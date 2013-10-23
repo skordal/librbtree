@@ -1,0 +1,8 @@
+.libs/
+*.o
+*.la
+*.lo
+
+rbtree_test
+*.swp
+

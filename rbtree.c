@@ -75,7 +75,8 @@ static void free_node_recursively(struct rbtree * tree, struct rbtree_node * nod
 
 	if(free_func)
 		free_func(node->data);
-	tree->free_key(node->key);
+	if(tree->free_key)
+		tree->free_key(node->key);
 	free(node);
 }
 
@@ -245,7 +246,8 @@ void * rbtree_delete(struct rbtree * tree, void * key)
 	if(y_orig_color == RBTREE_BLACK)
 		delete_fixup(tree, x);
 
-	tree->free_key(node->key);
+	if(tree->free_key)
+		tree->free_key(node->key);
 	free(node);
 	return retval;
 }

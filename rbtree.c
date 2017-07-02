@@ -63,6 +63,7 @@ void rbtree_free(struct rbtree * tree, rbtree_data_free_func free_func)
 	if(tree->root != NULL)
 		free_node_recursively(tree, tree->root, free_func);
 	free(tree->nil);
+	free(tree);
 }
 
 static void free_node_recursively(struct rbtree * tree, struct rbtree_node * node,

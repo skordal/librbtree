@@ -60,7 +60,7 @@ struct rbtree * rbtree_new(rbtree_key_compare_func key_compare, rbtree_key_free_
 
 void rbtree_free(struct rbtree * tree, rbtree_data_free_func free_func)
 {
-	if(tree->root != NULL)
+	if(tree->root != NULL && tree->root != tree->nil)
 		free_node_recursively(tree, tree->root, free_func);
 	free(tree->nil);
 	free(tree);
